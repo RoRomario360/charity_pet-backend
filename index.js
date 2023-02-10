@@ -1,6 +1,10 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import { validationResult } from "express-validator";
+import UserModel from "./models/User.js";
+
+import { registerValidation } from "./validations/auth.js";
 
 mongoose
   .connect(
@@ -12,28 +16,26 @@ mongoose
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello world! Again");
-});
+//register of users
+app.post("/auth/register", registerValidation, (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json(errors.array());
+  }
 
-app.post("/auth/login", (req, res) => {
-  console.log(req.body);
-
-  const token = jwt.sign(
-    {
-      email: req.body.email,
-      fullName: "Boris Jonson",
-    },
-    "secret123"
-  );
+  const doc = new UserModel({
+    email: req.body.email,
+    fullName: req.body.fullName,
+    avatarUrl: req.body.avatarUrl,
+    password: req.body.password,
+  });
 
   res.json({
     success: true,
-    token,
   });
 });
 
-app.listen(4444, (err) => {
+app.listen(4000, (err) => {
   if (err) {
     return console.log(err);
   }

@@ -1,2 +1,2 @@
 TODO:
-1. Video 32:47
+1. Video 45:02
