@@ -1,0 +1,28 @@
+{
+  "name": "charity_pet-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoRomario360/charity_pet-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RoRomario360/charity_pet-backend/issues"
+  },
+  "homepage": "https://github.com/RoRomario360/charity_pet-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.4"
+  }
+}
